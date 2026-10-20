@@ -1,1 +1,528 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#783f20">
+  <meta name="description" content="Gabintjibadak - Gabin lezat dengan berbagai pilihan rasa.">
+  <title>Gabintjibadak | Toko Gabin</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fffaf2;
+      color: #35251b;
+      line-height: 1.5;
+    }
+
+    header {
+      background: #783f20;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 14px;
+    }
+
+    .banner {
+      text-align: center;
+      background: #f4e1c7;
+      padding: 28px 15px;
+    }
+
+    .banner h2 {
+      margin-bottom: 8px;
+      font-size: 25px;
+    }
+
+    .banner p {
+      margin-bottom: 12px;
+    }
+
+    .label-promo {
+      display: inline-block;
+      background: #783f20;
+      color: white;
+      padding: 7px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 25px 15px;
+    }
+
+    .judul {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .judul h2 {
+      margin-bottom: 5px;
+    }
+
+    .produk-list {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit, minmax(220px, 1fr)
+      );
+      gap: 18px;
+    }
+
+    .produk {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px #00000012;
+    }
+
+    .produk img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #f0e7dd;
+    }
+
+    .info {
+      padding: 15px;
+    }
+
+    .info h3 {
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    .deskripsi {
+      color: #76685d;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .harga {
+      color: #a65322;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    .jumlah {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .jumlah button {
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 8px;
+      background: #783f20;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .jumlah button:active {
+      opacity: 0.7;
+    }
+
+    .angka {
+      min-width: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    .keranjang {
+      background: white;
+      margin-top: 28px;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px #00000012;
+    }
+
+    .keranjang h2 {
+      margin-bottom: 15px;
+    }
+
+    .item-keranjang {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid #eee5dc;
+      font-size: 14px;
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 2px solid #e8d7c6;
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .form-pembeli {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .form-pembeli label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      margin-top: 5px;
+      padding: 12px;
+      border: 1px solid #d6c7ba;
+      border-radius: 8px;
+      font: inherit;
+      background: white;
+      color: #35251b;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .checkout {
+      width: 100%;
+      padding: 15px;
+      background: #25d366;
+      color: #123c21;
+      border: none;
+      border-radius: 9px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .checkout:active {
+      opacity: 0.8;
+    }
+
+    .catatan {
+      font-size: 12px;
+      color: #76685d;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #783f20;
+      color: white;
+      text-align: center;
+      padding: 22px 15px;
+      margin-top: 30px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Gabintjibadak</h1>
+    <p>Gabin Lezat, Harga Bersahabat!</p>
+  </header>
+
+  <section class="banner">
+    <h2>Selamat Datang!</h2>
+    <p>Nikmati pilihan gabin favoritmu dengan harga terjangkau.</p>
+    <span class="label-promo">Semua Varian Rp5.000</span>
+  </section>
+
+  <main class="container">
+
+    <section>
+      <div class="judul">
+        <h2>Menu Gabin Kami</h2>
+        <p>Pilih rasa favorit dan tentukan jumlah pesananmu.</p>
+      </div>
+
+      <div class="produk-list">
+
+        <article class="produk">
+          <img
+            src="Gabin%20Isi%20Pisang.jpeg"
+            alt="Gabin Isi Pisang"
+            onerror="this.onerror=null;this.alt='Foto Gabin Isi Pisang belum tersedia';"
+          >
+          <div class="info">
+            <h3>Gabin Isi Pisang</h3>
+            <p class="deskripsi">Gabin dengan isian pisang.</p>
+            <p class="harga">Rp5.000</p>
+            <div class="jumlah">
+              <button onclick="ubahJumlah(0,-1)" aria-label="Kurangi pisang">−</button>
+              <span class="angka" id="jumlah0">0</span>
+              <button onclick="ubahJumlah(0,1)" aria-label="Tambah pisang">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="produk">
+          <img
+            src="Gabin%20Isi%20Ubi.jpeg"
+            alt="Gabin Isi Ubi"
+            onerror="this.onerror=null;this.alt='Foto Gabin Isi Ubi belum tersedia';"
+          >
+          <div class="info">
+            <h3>Gabin Isi Ubi</h3>
+            <p class="deskripsi">Gabin dengan isian ubi.</p>
+            <p class="harga">Rp5.000</p>
+            <div class="jumlah">
+              <button onclick="ubahJumlah(1,-1)" aria-label="Kurangi ubi">−</button>
+              <span class="angka" id="jumlah1">0</span>
+              <button onclick="ubahJumlah(1,1)" aria-label="Tambah ubi">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="produk">
+          <img
+            src="Gabin%20isi%20Tape.jpeg"
+            alt="Gabin Isi Tape"
+            onerror="this.onerror=null;this.alt='Foto Gabin Isi Tape belum tersedia';"
+          >
+          <div class="info">
+            <h3>Gabin Isi Tape</h3>
+            <p class="deskripsi">Gabin dengan isian tape.</p>
+            <p class="harga">Rp5.000</p>
+            <div class="jumlah">
+              <button onclick="ubahJumlah(2,-1)" aria-label="Kurangi tape">−</button>
+              <span class="angka" id="jumlah2">0</span>
+              <button onclick="ubahJumlah(2,1)" aria-label="Tambah tape">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="keranjang">
+      <h2>🛒 Keranjang Belanja</h2>
+
+      <div id="daftarPesanan">
+        Belum ada produk yang dipilih.
+      </div>
+
+      <div class="total">
+        <span>Total Belanja</span>
+        <span id="total">Rp0</span>
+      </div>
+
+      <div class="form-pembeli">
+
+        <label>
+          Nama Pembeli
+          <input
+            id="nama"
+            type="text"
+            placeholder="Masukkan nama kamu"
+            autocomplete="name"
+          >
+        </label>
+
+        <label>
+          Metode Pesanan
+          <select id="metode">
+            <option value="Diantar">Diantar</option>
+            <option value="Ambil sendiri">Ambil sendiri</option>
+          </select>
+        </label>
+
+        <label>
+          Alamat / Lokasi
+          <textarea
+            id="alamat"
+            placeholder="Masukkan alamat jika diantar, atau lokasi pengambilan"
+          ></textarea>
+        </label>
+
+        <label>
+          Catatan Tambahan (Opsional)
+          <textarea
+            id="catatan"
+            placeholder="Contoh: pesan untuk hari Sabtu"
+          ></textarea>
+        </label>
+
+        <button class="checkout" onclick="checkoutWA()">
+          Checkout via WhatsApp
+        </button>
+
+        <p class="catatan">
+          Pesanan akan disiapkan setelah kamu mengirim detail pesanan
+          melalui WhatsApp dan mengonfirmasi dengan penjual.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Gabintjibadak</strong></p>
+    <p>Terima kasih telah mendukung usaha kami ❤️</p>
+    <p>© 2026 Gabintjibadak</p>
+  </footer>
+
+  <script>
+    const produk = [
+      {
+        nama: "Gabin Isi Pisang",
+        harga: 5000,
+        jumlah: 0
+      },
+      {
+        nama: "Gabin Isi Ubi",
+        harga: 5000,
+        jumlah: 0
+      },
+      {
+        nama: "Gabin Isi Tape",
+        harga: 5000,
+        jumlah: 0
+      }
+    ];
+
+    // Nomor WhatsApp tujuan dalam format internasional Indonesia.
+    const nomorWA = "6283848403291";
+
+    function formatRupiah(angka) {
+      return "Rp" + angka.toLocaleString("id-ID");
+    }
+
+    function ubahJumlah(index, perubahan) {
+      produk[index].jumlah = Math.max(
+        0,
+        produk[index].jumlah + perubahan
+      );
+
+      document.getElementById("jumlah" + index).textContent =
+        produk[index].jumlah;
+
+      tampilkanKeranjang();
+    }
+
+    function tampilkanKeranjang() {
+      const daftar = document.getElementById("daftarPesanan");
+      let total = 0;
+      let html = "";
+      let jumlahItem = 0;
+
+      produk.forEach(function(item) {
+        if (item.jumlah > 0) {
+          const subtotal = item.harga * item.jumlah;
+          total += subtotal;
+          jumlahItem += item.jumlah;
+
+          html += `
+            <div class="item-keranjang">
+              <span>${item.nama} × ${item.jumlah}</span>
+              <strong>${formatRupiah(subtotal)}</strong>
+            </div>
+          `;
+        }
+      });
+
+      if (jumlahItem === 0) {
+        daftar.textContent = "Belum ada produk yang dipilih.";
+      } else {
+        daftar.innerHTML = html;
+      }
+
+      document.getElementById("total").textContent =
+        formatRupiah(total);
+    }
+
+    function checkoutWA() {
+      const nama = document.getElementById("nama").value.trim();
+      const metode = document.getElementById("metode").value;
+      const alamat = document.getElementById("alamat").value.trim();
+      const catatan = document.getElementById("catatan").value.trim();
+
+      const pesanan = produk.filter(function(item) {
+        return item.jumlah > 0;
+      });
+
+      if (pesanan.length === 0) {
+        alert("Silakan pilih minimal satu produk terlebih dahulu.");
+        return;
+      }
+
+      if (!nama) {
+        alert("Silakan isi nama pembeli terlebih dahulu.");
+        document.getElementById("nama").focus();
+        return;
+      }
+
+      if (!alamat) {
+        alert("Silakan isi alamat atau lokasi pengambilan.");
+        document.getElementById("alamat").focus();
+        return;
+      }
+
+      let total = 0;
+
+      let pesan =
+        "Halo Gabintjibadak! Saya ingin memesan gabin.\\n\\n" +
+        "Nama: " + nama + "\\n" +
+        "Metode pesanan: " + metode + "\\n" +
+        "Alamat/Lokasi: " + alamat + "\\n\\n" +
+        "DETAIL PESANAN:\\n";
+
+      pesanan.forEach(function(item) {
+        const subtotal = item.harga * item.jumlah;
+        total += subtotal;
+
+        pesan +=
+          "- " + item.nama +
+          " (" + item.jumlah + " x " +
+          formatRupiah(item.harga) + ") = " +
+          formatRupiah(subtotal) + "\\n";
+      });
+
+      pesan +=
+        "\\nTOTAL BELANJA: " + formatRupiah(total);
+
+      if (catatan) {
+        pesan += "\\nCatatan: " + catatan;
+      }
+
+      pesan +=
+        "\\n\\nMohon konfirmasi ketersediaan dan pesanan saya. Terima kasih!";
+
+      const url =
+        "https://wa.me/" + nomorWA +
+        "?text=" + encodeURIComponent(pesan);
+
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
+
