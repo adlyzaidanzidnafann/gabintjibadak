@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -54,7 +53,7 @@
 
     .promo {
       display: inline-block;
-      padding: 7px 14px;
+      padding: 8px 14px;
       color: white;
       background: #783f20;
       border-radius: 20px;
@@ -118,7 +117,6 @@
     .jumlah {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       gap: 10px;
     }
 
@@ -168,6 +166,10 @@
       font-size: 14px;
     }
 
+    .item span {
+      overflow-wrap: anywhere;
+    }
+
     .total {
       display: flex;
       justify-content: space-between;
@@ -177,6 +179,16 @@
       border-top: 2px solid #e8d7c6;
       font-size: 18px;
       font-weight: bold;
+    }
+
+    .info-ongkir {
+      margin-top: 15px;
+      padding: 13px;
+      border-radius: 8px;
+      background: #fff3e4;
+      color: #69401f;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .form-pembeli {
@@ -208,12 +220,9 @@
       color: #30251d;
       font-size: 16px;
       line-height: 1.4;
-      -webkit-appearance: none;
-      appearance: none;
       pointer-events: auto;
       user-select: text;
       -webkit-user-select: text;
-      opacity: 1;
     }
 
     .form-pembeli input {
@@ -249,10 +258,15 @@
       touch-action: manipulation;
     }
 
+    .checkout:active {
+      opacity: 0.8;
+    }
+
     .catatan-kecil {
       margin-top: 12px;
       color: #76685d;
       font-size: 12px;
+      line-height: 1.6;
     }
 
     footer {
@@ -310,7 +324,7 @@
   <section class="banner">
     <h2>Selamat Datang!</h2>
     <p>Pilih gabin favoritmu, lalu pesan melalui WhatsApp.</p>
-    <span class="promo">Semua Varian Rp5.000</span>
+    <span class="promo">Semua Varian Rp3.500/pcs</span>
   </section>
 
   <main>
@@ -327,12 +341,12 @@
                alt="Gabin Isi Pisang">
           <div class="info">
             <h3>Gabin Isi Pisang</h3>
-            <p class="deskripsi">Gabin isi pisang.</p>
-            <p class="harga">Rp5.000</p>
+            <p class="deskripsi">Gabin isi pisang yang lezat.</p>
+            <p class="harga">Rp3.500/pcs</p>
             <div class="jumlah">
-              <button type="button" onclick="ubahJumlah(0,-1)">−</button>
+              <button type="button" onclick="ubahJumlah(0,-1)" aria-label="Kurangi gabin pisang">−</button>
               <span class="angka" id="jumlah0">0</span>
-              <button type="button" onclick="ubahJumlah(0,1)">+</button>
+              <button type="button" onclick="ubahJumlah(0,1)" aria-label="Tambah gabin pisang">+</button>
             </div>
           </div>
         </article>
@@ -342,12 +356,12 @@
                alt="Gabin Isi Ubi">
           <div class="info">
             <h3>Gabin Isi Ubi</h3>
-            <p class="deskripsi">Gabin isi ubi.</p>
-            <p class="harga">Rp5.000</p>
+            <p class="deskripsi">Gabin isi ubi yang nikmat.</p>
+            <p class="harga">Rp3.500/pcs</p>
             <div class="jumlah">
-              <button type="button" onclick="ubahJumlah(1,-1)">−</button>
+              <button type="button" onclick="ubahJumlah(1,-1)" aria-label="Kurangi gabin ubi">−</button>
               <span class="angka" id="jumlah1">0</span>
-              <button type="button" onclick="ubahJumlah(1,1)">+</button>
+              <button type="button" onclick="ubahJumlah(1,1)" aria-label="Tambah gabin ubi">+</button>
             </div>
           </div>
         </article>
@@ -357,12 +371,12 @@
                alt="Gabin Isi Tape">
           <div class="info">
             <h3>Gabin Isi Tape</h3>
-            <p class="deskripsi">Gabin isi tape.</p>
-            <p class="harga">Rp5.000</p>
+            <p class="deskripsi">Gabin isi tape yang menggugah selera.</p>
+            <p class="harga">Rp3.500/pcs</p>
             <div class="jumlah">
-              <button type="button" onclick="ubahJumlah(2,-1)">−</button>
+              <button type="button" onclick="ubahJumlah(2,-1)" aria-label="Kurangi gabin tape">−</button>
               <span class="angka" id="jumlah2">0</span>
-              <button type="button" onclick="ubahJumlah(2,1)">+</button>
+              <button type="button" onclick="ubahJumlah(2,1)" aria-label="Tambah gabin tape">+</button>
             </div>
           </div>
         </article>
@@ -378,8 +392,15 @@
       </div>
 
       <div class="total">
-        <span>Total Belanja</span>
+        <span>Total Harga Produk</span>
         <span id="total">Rp0</span>
+      </div>
+
+      <div class="info-ongkir">
+        🚚 <strong>Informasi Ongkos Kirim</strong><br>
+        Ongkir akan dikonfirmasi melalui WhatsApp
+        setelah kamu mengirim pesanan. Total akhir
+        termasuk ongkir akan diinformasikan oleh penjual.
       </div>
 
       <div class="form-pembeli">
@@ -409,7 +430,7 @@
           <textarea
             id="alamat"
             name="alamat"
-            placeholder="Ketik alamat atau lokasi pengambilan di sini"
+            placeholder="Masukkan alamat lengkap untuk pengantaran atau lokasi pengambilan"
             autocomplete="street-address"
             required
           ></textarea>
@@ -420,17 +441,22 @@
           <textarea
             id="catatan"
             name="catatan"
-            placeholder="Tulis catatan tambahan di sini"
+            placeholder="Contoh: pesan untuk besok atau catatan lainnya"
           ></textarea>
         </label>
 
-        <button type="button" class="checkout" onclick="checkoutWA()">
-          Checkout via WhatsApp
+        <button
+          type="button"
+          class="checkout"
+          onclick="checkoutWA()"
+        >
+          📱 Checkout via WhatsApp
         </button>
 
         <p class="catatan-kecil">
-          Pesanan akan dikirim ke WhatsApp untuk dikonfirmasi.
-          Ongkos kirim, jika ada, dikonfirmasi dengan penjual.
+          Pesanan akan dikirim ke WhatsApp penjual untuk dikonfirmasi.
+          Harga produk belum termasuk ongkir. Ongkir dan total akhir
+          akan dibicarakan melalui WhatsApp.
         </p>
 
       </div>
@@ -445,11 +471,12 @@
 
   <script>
     const produk = [
-      { nama: "Gabin Isi Pisang", harga: 5000, jumlah: 0 },
-      { nama: "Gabin Isi Ubi", harga: 5000, jumlah: 0 },
-      { nama: "Gabin Isi Tape", harga: 5000, jumlah: 0 }
+      { nama: "Gabin Isi Pisang", harga: 3500, jumlah: 0 },
+      { nama: "Gabin Isi Ubi", harga: 3500, jumlah: 0 },
+      { nama: "Gabin Isi Tape", harga: 3500, jumlah: 0 }
     ];
 
+    // Nomor WhatsApp penjual
     const nomorWA = "6283848403291";
 
     function rupiah(angka) {
@@ -472,6 +499,7 @@
       const daftar = document.getElementById("daftarPesanan");
       let total = 0;
       let jumlahItem = 0;
+
       daftar.replaceChildren();
 
       produk.forEach(function(item) {
@@ -484,7 +512,8 @@
           baris.className = "item";
 
           const nama = document.createElement("span");
-          nama.textContent = item.nama + " × " + item.jumlah;
+          nama.textContent =
+            item.nama + " × " + item.jumlah + " pcs";
 
           const harga = document.createElement("strong");
           harga.textContent = rupiah(subtotal);
@@ -529,8 +558,11 @@
       }
 
       let total = 0;
-      let pesan = "Halo Gabintjibadak, saya ingin memesan gabin.\n\n";
-      pesan += "Nama: " + nama + "\n";
+
+      let pesan =
+        "Halo Gabintjibadak, saya ingin memesan gabin.\n\n";
+
+      pesan += "Nama pembeli: " + nama + "\n";
       pesan += "Metode pesanan: " + metode + "\n";
       pesan += "Alamat/lokasi: " + alamat + "\n\n";
       pesan += "DETAIL PESANAN:\n";
@@ -539,17 +571,20 @@
         const subtotal = item.harga * item.jumlah;
         total += subtotal;
 
-        pesan += "- " + item.nama + " x " + item.jumlah +
+        pesan += "- " + item.nama +
+          " x " + item.jumlah + " pcs" +
           " = " + rupiah(subtotal) + "\n";
       });
 
-      pesan += "\nTOTAL: " + rupiah(total);
+      pesan += "\nTOTAL HARGA PRODUK: " + rupiah(total);
+      pesan += "\nONGKIR: Mohon konfirmasi melalui WhatsApp.";
+      pesan += "\nTOTAL AKHIR: Menunggu konfirmasi ongkir.";
 
       if (catatan) {
-        pesan += "\nCatatan: " + catatan;
+        pesan += "\nCatatan tambahan: " + catatan;
       }
 
-      pesan += "\n\nMohon konfirmasi pesanan saya. Terima kasih.";
+      pesan += "\n\nMohon konfirmasi ketersediaan produk, ongkir, dan total akhir pesanan saya. Terima kasih.";
 
       const url = "https://wa.me/" + nomorWA +
         "?text=" + encodeURIComponent(pesan);
